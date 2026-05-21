@@ -1,0 +1,75 @@
+import Link from "next/link";
+import { COMPANY, NAV_ITEMS } from "@/lib/data";
+
+export function Footer() {
+  return (
+    <footer className="bg-ink text-cream/80">
+      <div className="container-rj py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+          {/* 회사 정보 */}
+          <div>
+            <div className="font-display text-3xl font-black text-cream mb-4">
+              R<span className="text-accent-red">&</span>J
+            </div>
+            <p className="text-sm leading-relaxed mb-4">
+              {COMPANY.slogan}
+            </p>
+            <p className="text-xs opacity-60">
+              {COMPANY.name}
+              <br />
+              대표 {COMPANY.ceo}
+            </p>
+          </div>
+
+          {/* 사업 분야 */}
+          <div>
+            <h4 className="text-cream font-semibold mb-4 text-sm">사업 분야</h4>
+            <ul className="space-y-2">
+              {NAV_ITEMS.map((item) => (
+                <li key={item.slug}>
+                  <Link
+                    href={`/${item.slug}`}
+                    className="text-sm hover:text-accent-red transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* 연락처 */}
+          <div>
+            <h4 className="text-cream font-semibold mb-4 text-sm">연락처</h4>
+            <ul className="space-y-2 text-sm">
+              <li>📞 {COMPANY.phone}</li>
+              <li>✉ {COMPANY.email}</li>
+              <li className="text-xs opacity-70 pt-2 leading-relaxed">
+                {COMPANY.address}
+              </li>
+              <li>
+                <a
+                  href={COMPANY.naverMap}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-2 text-xs underline hover:text-accent-red"
+                >
+                  🗺️ 네이버 지도에서 보기
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* 하단 정보 */}
+        <div className="border-t border-cream/10 pt-6 flex flex-col md:flex-row justify-between gap-4 text-xs opacity-50">
+          <div>
+            사업자등록번호 {COMPANY.bizNumber} | 통신판매업{" "}
+            {COMPANY.ecommerceNumber}
+          </div>
+          <div>© 2026 {COMPANY.name}. All rights reserved.</div>
+        </div>
+      </div>
+    </footer>
+  );
+}
