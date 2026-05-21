@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { COMPANY, NAV_ITEMS } from "@/lib/data";
@@ -29,9 +30,16 @@ export function Header() {
       <div className="container-rj">
         <div className="flex items-center justify-between h-20">
           {/* 로고 */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <span className="font-display text-2xl font-black tracking-tight">
-              R<span className="text-accent-red">&</span>J
+          <Link href="/" className="flex items-center gap-3 group">
+            <span className="relative size-11 overflow-hidden rounded-full bg-white shadow-sm ring-1 ring-line">
+              <Image
+                src="/assets/runandjump-logo.png"
+                alt="런앤점프 컴퍼니 로고"
+                fill
+                sizes="44px"
+                className="object-contain p-0.5"
+                priority
+              />
             </span>
             <span className="hidden md:block text-sm text-ink-soft font-medium border-l border-line pl-2 ml-1">
               런앤점프 컴퍼니

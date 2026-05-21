@@ -108,30 +108,32 @@ export function SkillTable({
   rows: ReactNode[][];
 }) {
   return (
-    <div className="my-8 overflow-hidden rounded-2xl border border-line bg-white">
-      <div className="grid bg-ink text-white" style={{ gridTemplateColumns: `repeat(${headers.length}, minmax(0, 1fr))` }}>
-        {headers.map((header, index) => (
-          <div key={index} className={`p-4 text-sm font-semibold ${index === 0 ? "bg-accent-red" : ""}`}>
-            {header}
-          </div>
-        ))}
-      </div>
-      {rows.map((row, rowIndex) => (
-        <div
-          key={rowIndex}
-          className="grid border-t border-line transition-colors hover:bg-cream"
-          style={{ gridTemplateColumns: `repeat(${headers.length}, minmax(0, 1fr))` }}
-        >
-          {row.map((cell, cellIndex) => (
-            <div
-              key={cellIndex}
-              className={`p-4 text-sm leading-relaxed ${cellIndex === 0 ? "font-display font-bold text-accent-red bg-cream" : "text-ink-soft"}`}
-            >
-              {cell}
+    <div className="my-8 overflow-x-auto rounded-2xl border border-line bg-white">
+      <div className="min-w-[680px]">
+        <div className="grid bg-ink text-white" style={{ gridTemplateColumns: `repeat(${headers.length}, minmax(0, 1fr))` }}>
+          {headers.map((header, index) => (
+            <div key={index} className={`p-4 text-sm font-semibold ${index === 0 ? "bg-accent-red" : ""}`}>
+              {header}
             </div>
           ))}
         </div>
-      ))}
+        {rows.map((row, rowIndex) => (
+          <div
+            key={rowIndex}
+            className="grid border-t border-line transition-colors hover:bg-cream"
+            style={{ gridTemplateColumns: `repeat(${headers.length}, minmax(0, 1fr))` }}
+          >
+            {row.map((cell, cellIndex) => (
+              <div
+                key={cellIndex}
+                className={`p-4 text-sm leading-relaxed ${cellIndex === 0 ? "font-display font-bold text-accent-red bg-cream" : "text-ink-soft"}`}
+              >
+                {cell}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

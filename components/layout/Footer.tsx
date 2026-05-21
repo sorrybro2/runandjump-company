@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { COMPANY, NAV_ITEMS } from "@/lib/data";
 
 export function Footer() {
@@ -8,8 +9,19 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* 회사 정보 */}
           <div>
-            <div className="font-display text-3xl font-black text-cream mb-4">
-              R<span className="text-accent-red">&</span>J
+            <div className="mb-4 flex items-center gap-3">
+              <span className="relative size-14 overflow-hidden rounded-full bg-white">
+                <Image
+                  src="/assets/runandjump-logo.png"
+                  alt="런앤점프 컴퍼니 로고"
+                  fill
+                  sizes="56px"
+                  className="object-contain p-1"
+                />
+              </span>
+              <div className="font-display text-2xl font-black text-cream">
+                Run & Jump
+              </div>
             </div>
             <p className="text-sm leading-relaxed mb-4">
               {COMPANY.slogan}

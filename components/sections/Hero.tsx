@@ -1,93 +1,132 @@
+import Image from "next/image";
 import Link from "next/link";
 import { COMPANY } from "@/lib/data";
 
+const proofPoints = [
+  { value: "8", label: "성장 서비스" },
+  { value: "30+", label: "출판 도서" },
+  { value: "15Y+", label: "현장 경험" },
+];
+
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      {/* 배경 도트 그리드 */}
-      <div className="absolute inset-0 dot-grid opacity-50" />
+    <section className="relative min-h-screen pt-24 overflow-hidden">
+      <div className="absolute inset-0 dot-grid opacity-40" />
+      <div className="absolute right-[-10%] top-24 h-[520px] w-[520px] rounded-full bg-accent-blue/20 blur-3xl" />
+      <div className="absolute bottom-0 left-[-8%] h-[420px] w-[420px] rounded-full bg-accent-red/10 blur-3xl" />
 
-      {/* Blob 애니메이션 */}
-      <div className="absolute top-20 right-10 w-96 h-96 bg-accent-orange/20 rounded-full blur-3xl animate-blob" />
-      <div
-        className="absolute bottom-20 left-10 w-96 h-96 bg-accent-blue/20 rounded-full blur-3xl animate-blob"
-        style={{ animationDelay: "5s" }}
-      />
-      <div
-        className="absolute top-1/2 left-1/2 w-96 h-96 bg-accent-gold/15 rounded-full blur-3xl animate-blob"
-        style={{ animationDelay: "10s" }}
-      />
-
-      <div className="container-rj relative z-10">
-        <div className="max-w-4xl">
+      <div className="container-rj relative z-10 grid min-h-[calc(100vh-6rem)] items-center gap-12 py-12 lg:grid-cols-[1.05fr_0.95fr]">
+        <div>
           <div className="eyebrow mb-6">— Run & Jump Company</div>
 
           <h1 className="section-title mb-8">
             뛰고, 배우고,
             <br />
-            <span className="italic text-accent-red">성장하는 사람들</span>
+            <span className="italic text-accent-red">성장하는 교육 플랫폼</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-ink-soft leading-relaxed max-w-2xl mb-10">
-            노력맨 진낙식 대표가 운영하는 1인 종합 콘텐츠 기업.
-            <br />
-            스포츠 교육부터 자기경영, 출판, 홈페이지까지 8개 사업을 운영합니다.
+          <p className="text-lg md:text-xl text-ink-soft leading-relaxed max-w-2xl mb-8">
+            런앤점프 컴퍼니는 아이의 첫 운동수업부터 공연, 지도자교육,
+            자기경영, 출판, 홈페이지 제작까지 사람의 가능성을 실제 행동과
+            결과로 연결합니다.
           </p>
+
+          <div className="mb-10 grid max-w-xl grid-cols-3 gap-4">
+            {proofPoints.map((item) => (
+              <div key={item.label} className="border-l-2 border-accent-red pl-4">
+                <div className="font-display text-3xl font-black leading-none">
+                  {item.value}
+                </div>
+                <div className="mt-2 text-xs font-semibold uppercase tracking-[0.16em] text-ink-mute">
+                  {item.label}
+                </div>
+              </div>
+            ))}
+          </div>
 
           <div className="flex flex-wrap gap-4">
             <Link href="/about" className="btn-primary">
               회사 소개 보기 →
+            </Link>
+            <Link href="/sports" className="btn-secondary">
+              서비스 둘러보기
             </Link>
             <a href={`tel:${COMPANY.phone}`} className="btn-secondary">
               📞 상담 신청
             </a>
           </div>
         </div>
-      </div>
 
-      {/* 떠다니는 카드들 (큰 화면에서만) */}
-      <div className="hidden xl:block">
-        <FloatingCard
-          className="top-32 right-20"
-          icon="🛼"
-          title="Sports Class"
-          subtitle="6개 종목"
-        />
-        <FloatingCard
-          className="bottom-40 right-40 animation-delay-2000"
-          icon="🫧"
-          title="Bubble Show"
-          subtitle="50+ 공연"
-        />
-        <FloatingCard
-          className="top-1/2 right-60 animation-delay-4000"
-          icon="🎓"
-          title="Certification"
-          subtitle="8개 자격"
-        />
+        <div className="relative min-h-[540px]">
+          <div className="absolute left-1/2 top-8 z-20 size-56 -translate-x-1/2 overflow-hidden rounded-full bg-white shadow-2xl ring-8 ring-cream">
+            <Image
+              src="/assets/runandjump-logo.png"
+              alt="런앤점프 컴퍼니 로고"
+              fill
+              sizes="224px"
+              className="object-contain p-3"
+              priority
+            />
+          </div>
+
+          <HeroImageCard
+            className="left-0 top-0 w-56 rotate-[-5deg]"
+            src="/assets/inline-class-photo.png"
+            alt="인라인 수업 현장"
+            label="Sports Class"
+          />
+          <HeroImageCard
+            className="right-0 top-28 w-60 rotate-[4deg]"
+            src="/assets/bubble-show-photo.png"
+            alt="버블쇼 공연 현장"
+            label="Bubble Show"
+          />
+          <HeroImageCard
+            className="bottom-20 left-10 w-56 rotate-[3deg]"
+            src="/assets/rope-class-photo.png"
+            alt="음악줄넘기 수업 현장"
+            label="Rope Class"
+          />
+          <HeroImageCard
+            className="bottom-0 right-12 w-52 rotate-[-4deg]"
+            src="/assets/play-tools-photo.png"
+            alt="놀이체육 도구"
+            label="Play Tools"
+          />
+
+          <div className="absolute bottom-36 left-1/2 z-30 w-72 -translate-x-1/2 rounded-2xl bg-ink p-6 text-cream shadow-2xl">
+            <div className="eyebrow mb-3 text-accent-gold">Founder</div>
+            <div className="font-display text-2xl font-black">노력맨 진낙식</div>
+            <p className="mt-2 text-sm leading-relaxed text-cream/70">
+              체육학 박사이자 현장 교육자. 즐겁게 배우고 건강하게 성장하는
+              경험을 설계합니다.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
 }
 
-function FloatingCard({
+function HeroImageCard({
   className,
-  icon,
-  title,
-  subtitle,
+  src,
+  alt,
+  label,
 }: {
-  className?: string;
-  icon: string;
-  title: string;
-  subtitle: string;
+  className: string;
+  src: string;
+  alt: string;
+  label: string;
 }) {
   return (
-    <div
-      className={`absolute bg-white/80 backdrop-blur-md border border-line rounded-2xl p-4 shadow-lg animate-blob ${className}`}
-    >
-      <div className="text-3xl mb-2">{icon}</div>
-      <div className="font-display font-bold text-sm">{title}</div>
-      <div className="text-xs text-ink-mute">{subtitle}</div>
+    <div className={`absolute overflow-hidden rounded-2xl bg-white p-2 shadow-xl ${className}`}>
+      <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
+        <Image src={src} alt={alt} fill sizes="240px" className="object-cover" />
+      </div>
+      <div className="px-2 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-accent-red">
+        {label}
+      </div>
     </div>
   );
 }
