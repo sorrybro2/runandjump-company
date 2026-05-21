@@ -27,12 +27,12 @@ export function Header() {
   const activeItem = NAV_ITEMS.find((item) => pathname === `/${item.slug}`);
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 px-3 pt-3 transition-all duration-300 sm:px-5">
+    <header className="fixed left-0 right-0 top-0 z-50 border-b border-line bg-cream px-3 py-3 shadow-sm transition-all duration-300 sm:px-5">
       <div className="mx-auto max-w-7xl">
         <div
           className={cn(
-            "flex min-h-16 items-center justify-between gap-3 rounded-2xl border border-line/80 bg-cream/95 px-3 shadow-lg shadow-ink/5 backdrop-blur-xl transition-all duration-300 sm:px-4",
-            scrolled && "min-h-14 bg-white/95 shadow-xl shadow-ink/10"
+            "flex min-h-16 items-center justify-between gap-3 rounded-2xl border border-line/80 bg-white px-3 shadow-lg shadow-ink/5 transition-all duration-300 sm:px-4",
+            scrolled && "min-h-14 shadow-xl shadow-ink/10"
           )}
         >
           <Link href="/" className="group flex min-w-0 items-center gap-3">
