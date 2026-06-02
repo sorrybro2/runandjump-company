@@ -114,7 +114,7 @@ export function ShowcaseScroll() {
         <div data-svc-head className="mb-14 max-w-3xl">
           <div className="eyebrow mb-4">— Our Services</div>
           <h2 className="section-title mb-6">
-            8개 사업,
+            6개 사업,
             <br />
             <span className="italic">하나의 철학</span>
           </h2>
@@ -127,7 +127,7 @@ export function ShowcaseScroll() {
         {/* 사진 카드 그리드 — 한 화면에 모두 */}
         <div
           data-svc-grid
-          className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
+          className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3"
         >
           {SHOWCASE.map((item) => (
             <Link
@@ -151,27 +151,27 @@ export function ShowcaseScroll() {
                 style={{ backgroundColor: item.accent }}
               />
 
-              <div className="absolute inset-0 flex flex-col justify-between p-5 text-cream">
+              <div className="absolute inset-0 flex flex-col justify-between p-4 text-cream sm:p-5">
                 <div className="flex items-start justify-between">
                   <span
-                    className="font-display text-3xl font-black italic"
+                    className="font-display text-2xl font-black italic sm:text-3xl"
                     style={{ color: item.accent }}
                   >
                     {item.num}
                   </span>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-cream/60">
+                  <span className="text-[9px] font-semibold uppercase tracking-[0.16em] text-cream/60 sm:text-[10px]">
                     {item.label}
                   </span>
                 </div>
 
                 <div>
-                  <h3 className="font-display text-2xl font-bold">
+                  <h3 className="font-display text-xl font-bold sm:text-2xl">
                     {item.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-cream/70">
+                  <p className="mt-1.5 text-xs leading-relaxed text-cream/70 sm:mt-2 sm:text-sm">
                     {item.desc}
                   </p>
-                  <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-cream/80 transition-colors group-hover:text-white">
+                  <span className="mt-2.5 inline-flex items-center gap-1.5 text-xs font-semibold text-cream/80 transition-colors group-hover:text-white sm:mt-3">
                     <span
                       className="inline-block h-px w-6 transition-all group-hover:w-9"
                       style={{ backgroundColor: item.accent }}
@@ -186,7 +186,7 @@ export function ShowcaseScroll() {
           {/* 노력맨과 함께 — 하단 가로 CTA 배너 */}
           <div
             data-svc-card
-            className="relative flex flex-col justify-between gap-6 overflow-hidden rounded-2xl bg-ink p-8 text-cream shadow-lg ring-1 ring-black/5 sm:col-span-2 md:flex-row md:items-center lg:col-span-3"
+            className="relative col-span-2 flex flex-col justify-between gap-6 overflow-hidden rounded-2xl bg-ink p-8 text-cream shadow-lg ring-1 ring-black/5 md:flex-row md:items-center lg:col-span-3"
           >
             <div className="relative z-10">
               <div className="eyebrow mb-3 text-accent-red">— Run with 노력맨</div>
