@@ -108,6 +108,20 @@ export const SERVICES = [
   },
 ] as const;
 
+// 분야별 노력맨 캐릭터 (『런앤점프 컴퍼니』 가이드북에서 추출)
+// 각 캐릭터 이미지에는 종목명 라벨이 함께 그려져 있습니다.
+// 흰 배경을 투명 처리한 누끼 버전 (scripts/cutout-mascots.mjs 로 생성)
+export const MASCOTS = {
+  base: "/assets/effortman-character.png",
+  inline: "/assets/mascots/inline.png",
+  rope: "/assets/mascots/rope.png",
+  basket: "/assets/mascots/basket.png",
+  board: "/assets/mascots/board.png",
+  play: "/assets/mascots/play.png",
+  soccer: "/assets/mascots/soccer.png",
+  bubble: "/assets/mascots/bubble.png",
+} as const;
+
 // 회사 철학
 export const PHILOSOPHY = [
   {
