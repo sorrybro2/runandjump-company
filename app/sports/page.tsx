@@ -8,11 +8,14 @@ import {
   InfoGrid,
   InlineCta,
   Lead,
+  MascotLead,
+  MascotRow,
   PhotoGrid,
   ProcessSteps,
   SectionTitle,
   SkillTable,
 } from "@/components/ui/ContentBlocks";
+import { MASCOTS } from "@/lib/data";
 
 const sports = [
   { num: "01 / 06", icon: "🛼", title: "인라인교실", desc: "균형감각·하체근력·민첩성·방향 전환 능력을 기르는 단계별 수업입니다." },
@@ -34,6 +37,16 @@ const tabs: Tab[] = [
         <Lead>
           <p>런앤점프 스포츠교실은 단순한 기술 전달이 아니라, 아이의 발달 단계에 맞춘 체계적인 운동 교육을 제공합니다. 6개 종목 모두 노력맨 대표가 직접 지도하거나 검증된 강사가 진행합니다.</p>
         </Lead>
+        <MascotRow
+          items={[
+            { src: MASCOTS.inline, label: "인라인" },
+            { src: MASCOTS.rope, label: "음악줄넘기" },
+            { src: MASCOTS.basket, label: "농구" },
+            { src: MASCOTS.board, label: "보드" },
+            { src: MASCOTS.play, label: "놀이체육" },
+            { src: MASCOTS.soccer, label: "축구" },
+          ]}
+        />
         <InfoGrid cards={sports} />
         <InlineCta title="어떤 종목이 우리 아이에게 맞을까요?" desc="아이 연령과 성향에 맞춰 추천해드립니다. 부담 없이 문의주세요." label="📞 010-8944-3907" />
       </>
@@ -46,9 +59,15 @@ const tabs: Tab[] = [
     content: (
       <>
         <SectionTitle>인라인<Em>교실</Em></SectionTitle>
-        <Lead>
+        <MascotLead src={MASCOTS.inline} alt="인라인교실 노력맨 캐릭터">
           <p>인라인교실은 균형감각, 하체 근력, 민첩성, 방향 전환 능력을 기르는 데 효과적인 프로그램입니다. 보호장비 착용법부터 안전하게 넘어지는 방법, 기본 주행, 정지, 회전, 장애물 통과까지 단계적으로 배웁니다.</p>
-        </Lead>
+        </MascotLead>
+        <PhotoGrid
+          photos={[
+            { src: "/assets/inline-class-photo.png", alt: "실내 마룻바닥에서 인라인을 타는 아이", caption: "실내 기본 주행 수업" },
+            { src: "/assets/guidebook/page_18_image_8.png", alt: "야외 스케이트장에서 인라인을 타는 아이들", caption: "야외 응용 주행" },
+          ]}
+        />
         <SkillTable
           headers={["단계", "기본 기술", "브레이크 기술"]}
           rows={[
@@ -84,9 +103,15 @@ const tabs: Tab[] = [
     content: (
       <>
         <SectionTitle>음악<Em>줄넘기</Em></SectionTitle>
-        <Lead>
+        <MascotLead src={MASCOTS.rope} alt="줄넘기교실 노력맨 캐릭터">
           <p>음악줄넘기교실은 체력·리듬감·순발력·집중력을 동시에 기르는 종목입니다. 기본 뛰기부터 음악줄넘기, 짝줄넘기, 긴줄넘기, 퍼포먼스 줄넘기까지 다양하게 구성됩니다.</p>
-        </Lead>
+        </MascotLead>
+        <PhotoGrid
+          photos={[
+            { src: "/assets/rope-class-photo.png", alt: "체육관에서 단체로 음악줄넘기를 하는 아이들", caption: "단체 음악줄넘기 수업" },
+            { src: "/assets/guidebook/page_21_image_12.png", alt: "줄넘기 기본 자세를 연습하는 아이", caption: "기본 자세 연습" },
+          ]}
+        />
         <SkillTable
           headers={["급수", "색상", "핵심 기술"]}
           rows={[
@@ -122,7 +147,15 @@ const tabs: Tab[] = [
     content: (
       <>
         <SectionTitle>농구<Em>교실</Em></SectionTitle>
-        <Lead><p>농구교실은 드리블, 패스, 슛, 수비, 팀플레이를 단계적으로 배우며 운동능력과 사회성을 함께 기릅니다.</p></Lead>
+        <MascotLead src={MASCOTS.basket} alt="농구교실 노력맨 캐릭터">
+          <p>농구교실은 드리블, 패스, 슛, 수비, 팀플레이를 단계적으로 배우며 운동능력과 사회성을 함께 기릅니다.</p>
+        </MascotLead>
+        <PhotoGrid
+          photos={[
+            { src: "/assets/basketball-class-photo.png", alt: "체육관에서 드리블과 수비를 연습하는 아이들", caption: "드리블 · 수비 연습" },
+            { src: "/assets/guidebook/page_23_image_15.png", alt: "골대를 향해 슛을 시도하는 아이", caption: "슛 동작 익히기" },
+          ]}
+        />
         <SkillTable
           headers={["단계", "기능", "세부 기술"]}
           rows={[
@@ -143,7 +176,9 @@ const tabs: Tab[] = [
     content: (
       <>
         <SectionTitle>보드<Em>교실</Em></SectionTitle>
-        <Lead><p>롱보드와 스케이트보드를 활용하여 균형감각, 중심 조절 능력, 자신감을 키우는 프로그램입니다. 안전교육을 가장 우선으로 합니다. 각 종목은 푸쉬 오프부터 고난도 기술까지 32단계로 차근차근 진행합니다.</p></Lead>
+        <MascotLead src={MASCOTS.board} alt="보드교실 노력맨 캐릭터">
+          <p>롱보드와 스케이트보드를 활용하여 균형감각, 중심 조절 능력, 자신감을 키우는 프로그램입니다. 안전교육을 가장 우선으로 합니다. 각 종목은 푸쉬 오프부터 고난도 기술까지 32단계로 차근차근 진행합니다.</p>
+        </MascotLead>
         <PhotoGrid
           photos={[
             { src: "/assets/board-class-photo.png", alt: "롱보드 수업 보드들", caption: "직접 타는 롱보드" },
@@ -207,7 +242,9 @@ const tabs: Tab[] = [
     content: (
       <>
         <SectionTitle>놀이<Em>체육</Em></SectionTitle>
-        <Lead><p>유아와 초등 저학년 아이들에게 적합한 프로그램입니다. 다양한 체육도구와 놀이 활동을 통해 기본운동능력과 사회성을 자연스럽게 기릅니다.</p></Lead>
+        <MascotLead src={MASCOTS.play} alt="유아체육 노력맨 캐릭터">
+          <p>유아와 초등 저학년 아이들에게 적합한 프로그램입니다. 다양한 체육도구와 놀이 활동을 통해 기본운동능력과 사회성을 자연스럽게 기릅니다.</p>
+        </MascotLead>
         <PhotoGrid
           photos={[
             { src: "/assets/guidebook/page_27_image_20.png", alt: "거북이 징검다리 놀이를 하는 아이들", caption: "균형 잡기 놀이" },
@@ -237,7 +274,9 @@ const tabs: Tab[] = [
     content: (
       <>
         <SectionTitle>축구<Em>교실</Em></SectionTitle>
-        <Lead><p>유소년 아이들에게 가장 인기 있는 스포츠 프로그램입니다. 공을 차는 즐거움에서 시작해 드리블, 패스, 슛, 경기 이해, 팀워크까지 단계적으로 배웁니다.</p></Lead>
+        <MascotLead src={MASCOTS.soccer} alt="축구교실 노력맨 캐릭터">
+          <p>유소년 아이들에게 가장 인기 있는 스포츠 프로그램입니다. 공을 차는 즐거움에서 시작해 드리블, 패스, 슛, 경기 이해, 팀워크까지 단계적으로 배웁니다.</p>
+        </MascotLead>
         <PhotoGrid
           photos={[
             { src: "/assets/guidebook/page_29_image_23.png", alt: "콘 사이로 드리블하는 아이", caption: "드리블 훈련" },
