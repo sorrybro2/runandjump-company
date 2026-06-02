@@ -2,6 +2,7 @@ import { SubpageHero } from "@/components/ui/SubpageHero";
 import { TabMenu, type Tab } from "@/components/ui/TabMenu";
 import {
   BulletList,
+  CaseList,
   Em,
   HighlightBox,
   InfoGrid,
@@ -35,8 +36,77 @@ const tabs: Tab[] = [
     ),
   },
   {
-    id: "structure",
+    id: "cases",
     num: "02",
+    label: "제작 사례",
+    content: (
+      <>
+        <SectionTitle>말보다 <Em>결과물</Em>로 증명합니다</SectionTitle>
+        <Lead>
+          <p>
+            지금 보고 계신 이 홈페이지를 포함해, 실제로 운영 중인 사이트와
+            업무 시스템을 직접 기획·제작해 왔습니다. 화려한 설명보다 &lsquo;실제로
+            돌아가는 결과물&rsquo;이 가장 확실한 증거라고 생각합니다.
+          </p>
+        </Lead>
+        <CaseList
+          cases={[
+            {
+              tag: "이 사이트",
+              status: "라이브",
+              title: "런앤점프 컴퍼니 홈페이지",
+              role: "지금 보고 계신 이 홈페이지를 직접 기획·디자인·제작했습니다.",
+              points: [
+                "8개 사업을 한 곳에 정리한 종합 콘텐츠 사이트",
+                "모바일 최적화와 부드러운 스크롤 인터랙션 적용",
+                "직접 내용을 수정·운영할 수 있는 구조",
+              ],
+              note: "← 지금 보고 계신 이 사이트가 바로 그 결과물입니다.",
+            },
+            {
+              tag: "업무 시스템",
+              status: "운영 중",
+              title: "법무법인 그룹사 통합 업무 시스템",
+              role: "전국 10개 지사가 매일 사용하는 고객·상담 관리 시스템을 기획부터 개발·운영까지 직접 맡았습니다.",
+              points: [
+                "전국 10개 지사 직원이 실제 업무에 매일 사용",
+                "흩어져 있던 수기·엑셀 관리를 하나의 시스템으로 통합",
+                "오픈 후에도 직접 운영하며 계속 개선 중인 실서비스",
+              ],
+            },
+            {
+              tag: "기업 홈페이지",
+              status: "운영 중",
+              title: "법무법인 공식 홈페이지 운영",
+              role: "외부 업체가 만들었던 홈페이지를 직접 넘겨받아, 사내에서 바로 수정·관리하는 체계로 전환했습니다.",
+              points: [
+                "외주에 의존하던 사이트를 직접 관리 가능한 구조로 이관",
+                "수정 때마다 들던 외주 비용과 대기 시간 절감",
+                "현재까지 직접 유지보수하며 운영 중",
+              ],
+            },
+          ]}
+        />
+        <HighlightBox tone="red">
+          <p className="font-display text-2xl italic">
+            &ldquo;지금 보고 계신 이 홈페이지도 저희가 직접 만들었습니다.&rdquo;
+          </p>
+          <p className="mt-4">
+            큰 회사의 시스템부터 1인기업 홈페이지까지 — 끝까지 책임지고 만들어,
+            오픈 후 직접 운영하실 수 있게 도와드립니다.
+          </p>
+        </HighlightBox>
+        <InlineCta
+          title="이런 사이트, 직접 만들어 드립니다"
+          desc="어떤 홈페이지가 필요한지 무료로 상담해 드립니다."
+          label="📞 010-8944-3907"
+        />
+      </>
+    ),
+  },
+  {
+    id: "structure",
+    num: "03",
     label: "구성 예시",
     content: (
       <>
@@ -58,7 +128,7 @@ const tabs: Tab[] = [
   },
   {
     id: "process",
-    num: "03",
+    num: "04",
     label: "제작 절차",
     content: (
       <>
@@ -84,7 +154,7 @@ const tabs: Tab[] = [
   },
   {
     id: "apply",
-    num: "04",
+    num: "05",
     label: "신청 방법",
     content: (
       <>
@@ -114,7 +184,7 @@ export default function WebPage() {
         eyebrow="— Web Development"
         title="홈페이지"
         titleItalic="제작"
-        description="강사·매장·학원·1인기업을 위한 실용적인 홈페이지를 만듭니다. 방문자가 원하는 정보를 빠르게 찾을 수 있는 구조가 중심입니다."
+        description="강사·매장·학원·1인기업을 위한 실용적인 홈페이지를 만듭니다. 지금 보고 계신 이 사이트도 직접 만들었습니다 — 방문자가 원하는 정보를 빠르게 찾을 수 있는 구조가 중심입니다."
         deco="Web"
       />
       <TabMenu tabs={tabs} />

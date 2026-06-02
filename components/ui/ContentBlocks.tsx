@@ -220,6 +220,66 @@ export function RecordFlow({ items }: { items: string[] }) {
   );
 }
 
+type CaseItem = {
+  tag: string;
+  status?: string;
+  title: string;
+  role: ReactNode;
+  points: string[];
+  note?: string;
+  href?: string;
+  linkLabel?: string;
+};
+
+export function CaseList({ cases }: { cases: CaseItem[] }) {
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 my-8">
+      {cases.map((item) => (
+        <article
+          key={item.title}
+          className="group relative flex flex-col overflow-hidden rounded-2xl border border-line bg-white p-7 transition-shadow hover:shadow-lg"
+        >
+          <div className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-accent-red transition-transform group-hover:scale-x-100" />
+          <div className="mb-4 flex items-center gap-2">
+            <span className="rounded-full bg-cream-deep px-3 py-1 text-xs font-semibold text-ink-soft">
+              {item.tag}
+            </span>
+            {item.status && (
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-red/10 px-3 py-1 text-xs font-semibold text-accent-red">
+                <span className="size-1.5 rounded-full bg-accent-red" />
+                {item.status}
+              </span>
+            )}
+          </div>
+          <h3 className="font-display text-2xl font-bold mb-3">{item.title}</h3>
+          <p className="text-sm text-ink-soft leading-relaxed mb-5">{item.role}</p>
+          <ul className="space-y-2 mb-2">
+            {item.points.map((point) => (
+              <li key={point} className="relative pl-5 text-sm text-ink-soft leading-relaxed">
+                <span className="absolute left-0 top-[7px] text-accent-red text-[10px]">◆</span>
+                {point}
+              </li>
+            ))}
+          </ul>
+          {item.note && (
+            <p className="mt-auto pt-4 text-xs italic text-ink-mute">{item.note}</p>
+          )}
+          {item.href && (
+            <a
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-auto pt-5 inline-flex items-center gap-1 text-sm font-semibold text-accent-red hover:underline"
+            >
+              {item.linkLabel ?? "사이트 보기"} →
+            </a>
+          )}
+        </article>
+      ))}
+    </div>
+  );
+}
+
 export function QuoteBox({ children }: { children: ReactNode }) {
   return (
     <blockquote className="my-8 border-l-4 border-accent-red bg-cream p-6 font-display text-2xl italic leading-relaxed">
