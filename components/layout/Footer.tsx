@@ -56,9 +56,16 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               <li>📞 {COMPANY.phone}</li>
               <li>✉ {COMPANY.email}</li>
-              <li className="text-xs opacity-70 pt-2 leading-relaxed">
-                {COMPANY.address}
-              </li>
+              {COMPANY.entities.map((entity) => (
+                <li
+                  key={entity.name}
+                  className="text-xs opacity-70 pt-2 leading-relaxed"
+                >
+                  <span className="text-cream/90">{entity.name}</span>
+                  <br />
+                  {entity.address}
+                </li>
+              ))}
               <li>
                 <a
                   href={COMPANY.naverMap}
@@ -75,9 +82,13 @@ export function Footer() {
 
         {/* 하단 정보 */}
         <div className="border-t border-cream/10 pt-6 flex flex-col md:flex-row justify-between gap-4 text-xs opacity-50">
-          <div>
-            사업자등록번호 {COMPANY.bizNumber} | 통신판매업{" "}
-            {COMPANY.ecommerceNumber}
+          <div className="leading-relaxed">
+            {COMPANY.entities.map((entity) => (
+              <span key={entity.name} className="mr-3">
+                {entity.name} 사업자등록번호 {entity.bizNumber}
+              </span>
+            ))}
+            <span>통신판매업 {COMPANY.ecommerceNumber}</span>
           </div>
           <div>© 2026 {COMPANY.name}. All rights reserved.</div>
         </div>

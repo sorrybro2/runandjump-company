@@ -14,15 +14,17 @@ import {
 } from "@/components/ui/ContentBlocks";
 
 const certs = [
-  ["유아체육지도자", "2009-0210", "한국유소년스포츠협회"],
-  ["유소년축구지도자", "2009-0209", "한국유소년스포츠협회"],
-  ["유소년농구지도자", "2009-0208", "한국유소년스포츠협회"],
-  ["유소년인라인지도자", "2010-0324", "한국유소년스포츠협회"],
-  ["유소년수영지도자", "2010-0323", "한국유소년스포츠협회"],
-  ["음악줄넘기지도자", "2013-0254", "한국유소년스포츠협회"],
-  ["방과후스포츠지도자", "2019-002534", "한국유소년스포츠협회"],
-  ["뉴스포츠지도자", "2019-006182", "한국유소년스포츠협회"],
+  ["유아체육지도자", "2009-0210", "런앤점프 컴퍼니"],
+  ["유소년축구지도자", "2009-0209", "런앤점프 컴퍼니"],
+  ["유소년농구지도자", "2009-0208", "런앤점프 컴퍼니"],
+  ["유소년인라인지도자", "2010-0324", "런앤점프 컴퍼니"],
+  ["유소년수영지도자", "2010-0323", "런앤점프 컴퍼니"],
+  ["음악줄넘기지도자", "2013-0254", "런앤점프 컴퍼니"],
+  ["방과후스포츠지도자", "2019-002534", "런앤점프 컴퍼니"],
+  ["뉴스포츠지도자", "2019-006182", "런앤점프 컴퍼니"],
 ];
+
+const linkClass = "text-accent-red underline underline-offset-2 hover:text-accent-red/70";
 
 const tabs: Tab[] = [
   {
@@ -59,7 +61,7 @@ const tabs: Tab[] = [
         ]} />
         <HighlightBox tone="red">
           <p className="font-display text-2xl italic">"홍길동 / 유아체육지도자 1급 / 901225 / 대전시 ○○구 ○○로 (+ 증명사진 파일)"</p>
-          <p className="mt-4">010-8944-3907 / 협회 문의 042-862-6199</p>
+          <p className="mt-4">010-8944-3907 / 기관문의 042-862-6199</p>
         </HighlightBox>
         <HighlightBox title="재발급 · 환불 안내">
           <BulletList items={["재발급은 1종목당 20,000원입니다.", "연수 시작 전에는 100% 환불 가능합니다.", "연수 시작 후에는 환불이 불가합니다."]} />
@@ -70,13 +72,17 @@ const tabs: Tab[] = [
   {
     id: "assoc",
     num: "03",
-    label: "협회 소개",
+    label: "기관소개",
     content: (
       <>
-        <SectionTitle>한국유소년스포츠협회</SectionTitle>
-        <Lead><p>런앤점프 컴퍼니의 모든 지도자 자격증은 한국유소년스포츠협회에서 발급되는 민간자격입니다.</p></Lead>
-        <HighlightBox title="협회 정보">
-          <BulletList items={["다음 카페: http://cafe.daum.net/kcpea-1", "협회 문의: 042-862-6199", "연수원장: 010-8944-3907"]} />
+        <SectionTitle>런앤점프 컴퍼니</SectionTitle>
+        <Lead><p>런앤점프 컴퍼니의 모든 지도자 자격증은 런앤점프 컴퍼니가 직접 발급하는 민간자격입니다.</p></Lead>
+        <HighlightBox title="기관정보">
+          <BulletList items={[
+            <>다음 카페: <a href="http://cafe.daum.net/kcpea-1" target="_blank" rel="noopener noreferrer" className={linkClass}>cafe.daum.net/kcpea-1</a></>,
+            <>기관문의: <a href="tel:042-862-6199" className={linkClass}>042-862-6199</a></>,
+            <>연수원장: <a href="tel:010-8944-3907" className={linkClass}>010-8944-3907</a></>,
+          ]} />
         </HighlightBox>
         <SkillTable headers={["자격명", "등록번호", "발급기관"]} rows={certs} />
       </>
@@ -106,18 +112,18 @@ const tabs: Tab[] = [
   {
     id: "fee",
     num: "05",
-    label: "비용 · 할인",
+    label: "비용",
     content: (
       <>
         <SectionTitle>비용 & <Em>할인 혜택</Em></SectionTitle>
         <Lead><p>여러 종목을 동시에 취득하면 비용이 크게 줄어듭니다. 모든 비용에는 연수·교재·자격증 발급비가 포함되어 있습니다.</p></Lead>
-        <SkillTable headers={["종목수", "비용", "1종목당 환산"]} rows={[
-          ["1종목", "200,000원", "200,000원"],
-          ["2종목", "250,000원", "125,000원"],
-          ["3종목", "300,000원", "100,000원"],
-          ["4종목", "350,000원", "87,500원"],
-          ["5종목", "400,000원", "80,000원"],
-          ["6종목", "450,000원", "75,000원"],
+        <SkillTable headers={["종목수", "비용"]} rows={[
+          ["1종목", "200,000원"],
+          ["2종목", "250,000원"],
+          ["3종목", "300,000원"],
+          ["4종목", "350,000원"],
+          ["5종목", "400,000원"],
+          ["6종목", "450,000원"],
         ]} />
         <SkillTable headers={["인원수", "할인율", "비고"]} rows={[
           ["2명", "5% 할인", "동시 신청"],
@@ -201,7 +207,7 @@ export default function CertPage() {
         eyebrow="— Certification Program"
         title="지도자"
         titleItalic="교육"
-        description="한국유소년스포츠협회의 8개 민간자격을 취득할 수 있습니다. 현장에서 바로 사용할 수 있는 실전형 교육을 지향합니다."
+        description="런앤점프 컴퍼니의 8개 민간자격을 취득할 수 있습니다. 현장에서 바로 사용할 수 있는 실전형 교육을 지향합니다."
         deco="Cert"
       />
       <TabMenu tabs={tabs} />

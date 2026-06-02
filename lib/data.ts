@@ -9,6 +9,19 @@ export const COMPANY = {
   address: "대전 서구 둔산로 241 맑은호수 보라아파트 상가 2층",
   bizNumber: "404-10-94015",
   ecommerceNumber: "2023-대전서구-0164호",
+  // 두 개 사업체 정보 (푸터 표기용)
+  entities: [
+    {
+      name: "런앤점프 샵",
+      bizNumber: "404-10-94015",
+      address: "대전 서구 둔산로 241 맑은호수 보라아파트상가 2층",
+    },
+    {
+      name: "런앤점프 컴퍼니",
+      bizNumber: "314-15-76062",
+      address: "대전 서구 둔산남로 30, 105-106",
+    },
+  ],
   phone: "010-8944-3907",
   email: "05070208@hanmail.net",
   associationPhone: "042-862-6199",
@@ -53,7 +66,7 @@ export const SERVICES = [
     num: "03",
     label: "Certification",
     title: "지도자교육",
-    desc: "한국유소년스포츠협회 8개 민간자격. 실전형 교육으로 자격증 + 노하우 동시 획득.",
+    desc: "런앤점프 컴퍼니 8개 민간자격. 실전형 교육으로 자격증 + 노하우 동시 획득.",
     icon: "🎓",
     color: "accent-gold",
   },
