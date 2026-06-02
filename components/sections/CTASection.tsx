@@ -1,10 +1,11 @@
 import { COMPANY } from "@/lib/data";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function CTASection() {
   return (
     <section className="py-24 bg-cream-deep">
       <div className="container-rj">
-        <div className="max-w-4xl mx-auto text-center">
+        <Reveal className="max-w-4xl mx-auto text-center">
           <div className="eyebrow mb-6">— Get In Touch</div>
           <h2 className="section-title mb-8">
             첫 걸음은
@@ -25,7 +26,7 @@ export function CTASection() {
               💬 문자 보내기
             </a>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

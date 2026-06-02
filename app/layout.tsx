@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { SmoothScroll } from "@/components/providers/SmoothScroll";
 
 export const metadata: Metadata = {
   title: "런앤점프 컴퍼니 — 노력맨 진낙식",
@@ -34,9 +35,11 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <SmoothScroll>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );

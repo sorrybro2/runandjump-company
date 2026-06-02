@@ -1,4 +1,5 @@
 import { PHILOSOPHY } from "@/lib/data";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function Philosophy() {
   return (
@@ -11,19 +12,20 @@ export function Philosophy() {
       </div>
 
       <div className="container-rj relative z-10">
-        <div className="max-w-3xl mb-16">
+        <Reveal className="max-w-3xl mb-16">
           <div className="eyebrow text-accent-red mb-4">— Our Philosophy</div>
           <h2 className="section-title mb-6">
             우리가 일하는
             <br />
             <span className="italic text-accent-red">세 가지 방식</span>
           </h2>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {PHILOSOPHY.map((item) => (
-            <div
+          {PHILOSOPHY.map((item, i) => (
+            <Reveal
               key={item.num}
+              delay={i * 0.12}
               className="border-t-2 border-accent-red pt-8"
             >
               <div className="font-display text-5xl italic font-black mb-4 text-accent-red">
@@ -33,7 +35,7 @@ export function Philosophy() {
                 {item.title}
               </h3>
               <p className="text-cream/70 leading-relaxed">{item.desc}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
