@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 
 type InfoCard = {
   icon?: string;
@@ -138,6 +139,62 @@ export function SkillTable({
   );
 }
 
+type Photo = { src: string; alt: string; caption?: string };
+
+export function PhotoGrid({ photos }: { photos: Photo[] }) {
+  const cols =
+    photos.length === 1
+      ? "sm:grid-cols-1 max-w-xl"
+      : photos.length === 2
+        ? "sm:grid-cols-2"
+        : "sm:grid-cols-2 lg:grid-cols-3";
+  return (
+    <div className={`grid grid-cols-1 ${cols} gap-4 my-8`}>
+      {photos.map((photo) => (
+        <figure
+          key={photo.src}
+          className="overflow-hidden rounded-2xl border border-line bg-white"
+        >
+          <div className="relative aspect-[4/3]">
+            <Image
+              src={photo.src}
+              alt={photo.alt}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover"
+            />
+          </div>
+          {photo.caption && (
+            <figcaption className="p-3 text-center text-sm text-ink-soft">
+              {photo.caption}
+            </figcaption>
+          )}
+        </figure>
+      ))}
+    </div>
+  );
+}
+
+export function WideImage({ src, alt, caption }: Photo) {
+  return (
+    <figure className="my-8 overflow-hidden rounded-2xl border border-line bg-white">
+      <Image
+        src={src}
+        alt={alt}
+        width={1000}
+        height={1000}
+        sizes="(max-width: 768px) 100vw, 768px"
+        className="h-auto w-full object-contain"
+      />
+      {caption && (
+        <figcaption className="p-3 text-center text-sm text-ink-soft">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+
 export function ChipGrid({ items }: { items: string[] }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 my-8">
@@ -147,6 +204,19 @@ export function ChipGrid({ items }: { items: string[] }) {
         </div>
       ))}
     </div>
+  );
+}
+
+export function RecordFlow({ items }: { items: string[] }) {
+  return (
+    <p className="my-4 text-ink-soft leading-loose">
+      {items.map((item, index) => (
+        <span key={item}>
+          {index > 0 && <span className="mx-2 select-none text-accent-red/40">·</span>}
+          {item}
+        </span>
+      ))}
+    </p>
   );
 }
 

@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { SubpageHero } from "@/components/ui/SubpageHero";
 import { TabMenu, type Tab } from "@/components/ui/TabMenu";
 import {
@@ -9,8 +11,15 @@ import {
   InlineCta,
   Lead,
   ProcessSteps,
+  RecordFlow,
   SectionTitle,
+  WideImage,
 } from "@/components/ui/ContentBlocks";
+
+// 카탈로그 이미지 파일이 있을 때만 표시 (없으면 깨진 빈 박스 대신 아무것도 안 보임)
+const hasEquipmentImage = existsSync(
+  join(process.cwd(), "public", "assets", "bubble-equipment.png"),
+);
 
 const tabs: Tab[] = [
   {
@@ -47,11 +56,11 @@ const tabs: Tab[] = [
         <SectionTitle>이미 <Em>수많은 현장</Em>에서 검증되었습니다</SectionTitle>
         <Lead><p>유치원·어린이집·초등학교·교회·복지관·마라톤대회·해외 선교 등 다양한 현장에서 공연을 진행해왔습니다.</p></Lead>
         <h3 className="font-display text-2xl font-bold mt-8 mb-4">유치원 · 어린이집</h3>
-        <ChipGrid items={["새봄유치원 — 연속 2회 / 2년", "한밭대학교어린이집", "나래유치원", "하은유치원", "키즈원 어린이집 — 체험사진", "강화군립어린이집", "소담하랑어린이집 — 야외, 2년", "엑스포유치원", "혜천유치원 — 3회 공연", "여울유치원 — 연속 2회", "참샘유치원", "용정어린이집 — 2회 공연"]} />
+        <RecordFlow items={["새봄유치원 — 연속 2회 / 2년", "한밭대학교어린이집", "나래유치원", "하은유치원", "키즈원 어린이집 — 체험사진", "강화군립어린이집", "소담하랑어린이집 — 야외, 2년", "엑스포유치원", "혜천유치원 — 3회 공연", "여울유치원 — 연속 2회", "참샘유치원", "용정어린이집 — 2회 공연"]} />
         <h3 className="font-display text-2xl font-bold mt-8 mb-4">초등학교 · 병설유치원</h3>
-        <ChipGrid items={["양지초등학교 — 2회 연속", "구즉초 병설유치원·1학년 — 체험사진", "중리초병설유치원 — 연속 2회", "기성초 병설유치원", "상원초등학교 1학년", "공주 탄천초 전교생 — 체험사진", "공주 태봉초 전교생 — 연속 2회"]} />
+        <RecordFlow items={["양지초등학교 — 2회 연속", "구즉초 병설유치원·1학년 — 체험사진", "중리초병설유치원 — 연속 2회", "기성초 병설유치원", "상원초등학교 1학년", "공주 탄천초 전교생 — 체험사진", "공주 태봉초 전교생 — 연속 2회"]} />
         <h3 className="font-display text-2xl font-bold mt-8 mb-4">교회 · 복지관 · 기타</h3>
-        <ChipGrid items={["예뜰순복음교회 — 2회 연속", "한밭제일교회 방과후교실", "새로남교회 유년부", "한밭종합사회복지관 — 체험사진", "롯데마트 문화센터 대덕점", "유성국화마라톤대회 버블체험 — 2년", "대청호마라톤 버블체험 — 2년", "통영·아산 버블 강습회"]} />
+        <RecordFlow items={["예뜰순복음교회 — 2회 연속", "한밭제일교회 방과후교실", "새로남교회 유년부", "한밭종합사회복지관 — 체험사진", "롯데마트 문화센터 대덕점", "유성국화마라톤대회 버블체험 — 2년", "대청호마라톤 버블체험 — 2년", "통영·아산 버블 강습회"]} />
       </>
     ),
   },
@@ -87,6 +96,13 @@ const tabs: Tab[] = [
       <>
         <SectionTitle>장비 <Em>제작 & 판매</Em></SectionTitle>
         <Lead><p>버블쇼 장비는 공연의 완성도를 결정하는 중요한 요소입니다. 현장에서 검증된 장비를 직접 제작하여 안정적이고 화려한 공연을 가능하게 합니다.</p></Lead>
+        {hasEquipmentImage && (
+          <WideImage
+            src="/assets/bubble-equipment.png"
+            alt="버블 장비 전체 종류 안내표"
+            caption="직접 제작·판매하는 버블 장비 32종"
+          />
+        )}
         <h3 className="font-display text-2xl font-bold mt-8 mb-4">버블 채</h3>
         <ChipGrid items={["기본링", "사각링", "해바라기", "사람 들어가는 채", "중링 / 원중링", "별 중링", "하트", "상어", "십자가", "쌍둥이 / 엄마-아빠", "삼둥이"]} />
         <h3 className="font-display text-2xl font-bold mt-8 mb-4">대형 채 & 특수 장비</h3>
