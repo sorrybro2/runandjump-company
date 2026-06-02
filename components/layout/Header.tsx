@@ -24,8 +24,6 @@ export function Header() {
     setIsOpen(false);
   }, [pathname]);
 
-  const activeItem = NAV_ITEMS.find((item) => pathname === `/${item.slug}`);
-
   return (
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-line bg-cream px-3 py-3 shadow-sm transition-all duration-300 sm:px-5">
       <div className="mx-auto max-w-7xl">
@@ -75,11 +73,6 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
-            {activeItem && (
-              <span className="hidden rounded-full border border-line bg-white px-3 py-2 text-xs font-bold text-ink-soft lg:inline-flex">
-                {activeItem.label}
-              </span>
-            )}
             <a
               href={`tel:${COMPANY.phone}`}
               className="hidden items-center gap-2 rounded-full bg-accent-red px-4 py-2.5 text-sm font-extrabold text-white shadow-lg shadow-accent-red/20 transition-all hover:-translate-y-0.5 hover:bg-accent-red-deep md:inline-flex"
