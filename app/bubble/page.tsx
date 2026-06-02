@@ -10,11 +10,15 @@ import {
   InfoGrid,
   InlineCta,
   Lead,
+  MascotLead,
+  PhotoGrid,
   ProcessSteps,
-  RecordFlow,
+  RecordBoard,
   SectionTitle,
+  StatStrip,
   WideImage,
 } from "@/components/ui/ContentBlocks";
+import { MASCOTS } from "@/lib/data";
 
 // 카탈로그 이미지 파일이 있을 때만 표시 (없으면 깨진 빈 박스 대신 아무것도 안 보임)
 const hasEquipmentImage = existsSync(
@@ -29,10 +33,16 @@ const tabs: Tab[] = [
     content: (
       <>
         <SectionTitle>아이들에게 <Em>상상력과 감동</Em>을 선물합니다</SectionTitle>
-        <Lead>
+        <MascotLead src={MASCOTS.bubble} alt="버블쇼 노력맨 캐릭터">
           <p>런앤점프 컴퍼니의 버블쇼 + 마술쇼는 아이들에게 상상력과 감동을 선물하는 공연 프로그램입니다. 비눗방울이라는 친숙한 소재를 활용하지만, 그 안에는 과학·예술·놀이·무대 연출이 함께 담겨 있습니다.</p>
           <p>유치원, 어린이집, 초등학교, 지역축제, 가족행사, 기업행사 등 다양한 현장에서 진행할 수 있습니다.</p>
-        </Lead>
+        </MascotLead>
+        <PhotoGrid
+          photos={[
+            { src: "/assets/bubble-show-photo.png", alt: "야외 축제에서 진행한 버블쇼 현장", caption: "야외 축제 버블 공연" },
+            { src: "/assets/guidebook/page_35_image_28.png", alt: "실내 무대에서 진행한 버블쇼 + 마술쇼", caption: "실내 무대 공연" },
+          ]}
+        />
         <InfoGrid
           cards={[
             { icon: "📅", title: "예약 우선", desc: "지역·날짜·기관명·행사명·인원·층수·엘리베이터 여부를 미리 알려주세요." },
@@ -54,13 +64,63 @@ const tabs: Tab[] = [
     content: (
       <>
         <SectionTitle>이미 <Em>수많은 현장</Em>에서 검증되었습니다</SectionTitle>
-        <Lead><p>유치원·어린이집·초등학교·교회·복지관·마라톤대회·해외 선교 등 다양한 현장에서 공연을 진행해왔습니다.</p></Lead>
-        <h3 className="font-display text-2xl font-bold mt-8 mb-4">유치원 · 어린이집</h3>
-        <RecordFlow items={["새봄유치원 — 연속 2회 / 2년", "한밭대학교어린이집", "나래유치원", "하은유치원", "키즈원 어린이집 — 체험사진", "강화군립어린이집", "소담하랑어린이집 — 야외, 2년", "엑스포유치원", "혜천유치원 — 3회 공연", "여울유치원 — 연속 2회", "참샘유치원", "용정어린이집 — 2회 공연"]} />
-        <h3 className="font-display text-2xl font-bold mt-8 mb-4">초등학교 · 병설유치원</h3>
-        <RecordFlow items={["양지초등학교 — 2회 연속", "구즉초 병설유치원·1학년 — 체험사진", "중리초병설유치원 — 연속 2회", "기성초 병설유치원", "상원초등학교 1학년", "공주 탄천초 전교생 — 체험사진", "공주 태봉초 전교생 — 연속 2회"]} />
-        <h3 className="font-display text-2xl font-bold mt-8 mb-4">교회 · 복지관 · 기타</h3>
-        <RecordFlow items={["예뜰순복음교회 — 2회 연속", "한밭제일교회 방과후교실", "새로남교회 유년부", "한밭종합사회복지관 — 체험사진", "롯데마트 문화센터 대덕점", "유성국화마라톤대회 버블체험 — 2년", "대청호마라톤 버블체험 — 2년", "통영·아산 버블 강습회"]} />
+        <Lead><p>유치원·어린이집·초등학교·교회·복지관·마라톤대회·해외 선교 등 다양한 현장에서 공연을 진행해왔습니다. 다시 찾아주시는 재섭외가 많다는 점이 가장 큰 신뢰입니다.</p></Lead>
+        <StatStrip
+          stats={[
+            { num: "50+", label: "검증된 공연 무대" },
+            { num: "2년+", label: "연속 재섭외 다수" },
+            { num: "27곳", label: "대표 진행 사례" },
+          ]}
+        />
+        <RecordBoard
+          groups={[
+            {
+              icon: "🧸",
+              title: "유치원 · 어린이집",
+              items: [
+                { name: "새봄유치원", tags: ["연속 2회", "2년"] },
+                { name: "한밭대학교어린이집" },
+                { name: "나래유치원" },
+                { name: "하은유치원" },
+                { name: "키즈원 어린이집", tags: ["체험사진"] },
+                { name: "강화군립어린이집" },
+                { name: "소담하랑어린이집", tags: ["야외", "2년"] },
+                { name: "엑스포유치원" },
+                { name: "혜천유치원", tags: ["3회 공연"] },
+                { name: "여울유치원", tags: ["연속 2회"] },
+                { name: "참샘유치원" },
+                { name: "용정어린이집", tags: ["2회 공연"] },
+              ],
+            },
+            {
+              icon: "🏫",
+              title: "초등학교 · 병설유치원",
+              items: [
+                { name: "양지초등학교", tags: ["2회 연속"] },
+                { name: "구즉초 병설유치원·1학년", tags: ["체험사진"] },
+                { name: "중리초병설유치원", tags: ["연속 2회"] },
+                { name: "기성초 병설유치원" },
+                { name: "상원초등학교 1학년" },
+                { name: "공주 탄천초 전교생", tags: ["체험사진"] },
+                { name: "공주 태봉초 전교생", tags: ["연속 2회"] },
+              ],
+            },
+            {
+              icon: "⛪",
+              title: "교회 · 복지관 · 기타",
+              items: [
+                { name: "예뜰순복음교회", tags: ["2회 연속"] },
+                { name: "한밭제일교회 방과후교실" },
+                { name: "새로남교회 유년부" },
+                { name: "한밭종합사회복지관", tags: ["체험사진"] },
+                { name: "롯데마트 문화센터 대덕점" },
+                { name: "유성국화마라톤대회 버블체험", tags: ["2년"] },
+                { name: "대청호마라톤 버블체험", tags: ["2년"] },
+                { name: "통영·아산 버블 강습회" },
+              ],
+            },
+          ]}
+        />
       </>
     ),
   },
