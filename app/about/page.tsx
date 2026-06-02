@@ -246,7 +246,7 @@ export default function AboutPage() {
 
       {/* 섹션 이동 네비게이션 — 데스크탑은 우측 책갈피, 모바일은 상단 바 */}
       <SideBookmarkNav items={navItems} />
-      <nav className="sticky top-[88px] z-30 border-b border-line bg-cream shadow-sm lg:hidden">
+      <nav className="sticky top-20 z-30 border-b border-line bg-cream shadow-sm lg:hidden">
         <div className="container-rj">
           <div className="flex gap-1 overflow-x-auto py-3 scrollbar-hide">
             {navItems.map((item) => (

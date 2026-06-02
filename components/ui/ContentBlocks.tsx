@@ -26,17 +26,17 @@ export function Em({ children }: { children: ReactNode }) {
 
 export function InfoGrid({ cards }: { cards: InfoCard[] }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
+    <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 my-8">
       {cards.map((card) => (
         <article key={`${card.num ?? ""}-${card.title}`} className="card-base group relative overflow-hidden">
           <div className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-accent-red transition-transform group-hover:scale-x-100" />
           {card.num && <div className="font-display text-xs italic text-ink-mute mb-2">{card.num}</div>}
           {card.icon && (
-            <div className="mb-4 flex size-14 items-center justify-center rounded-full bg-cream text-3xl transition-transform group-hover:rotate-6 group-hover:scale-105">
+            <div className="mb-3 sm:mb-4 flex size-12 sm:size-14 items-center justify-center rounded-full bg-cream text-2xl sm:text-3xl transition-transform group-hover:rotate-6 group-hover:scale-105">
               {card.icon}
             </div>
           )}
-          <h3 className="font-display text-2xl font-bold mb-3">{card.title}</h3>
+          <h3 className="font-display text-xl sm:text-2xl font-bold mb-2 sm:mb-3">{card.title}</h3>
           <div className="text-sm text-ink-soft leading-relaxed">{card.desc}</div>
         </article>
       ))}
@@ -87,13 +87,13 @@ export function ProcessSteps({
   steps: Array<{ title: string; desc: ReactNode }>;
 }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-10">
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 my-10">
       {steps.map((step, index) => (
-        <article key={step.title} className="bg-white border border-line rounded-2xl p-6 text-center">
+        <article key={step.title} className="bg-white border border-line rounded-2xl p-5 sm:p-6 text-center">
           <div className="mx-auto mb-4 flex size-12 items-center justify-center rounded-full bg-accent-red text-white font-display text-xl font-black italic">
             {index + 1}
           </div>
-          <h3 className="font-display text-xl font-bold mb-3">{step.title}</h3>
+          <h3 className="font-display text-lg sm:text-xl font-bold mb-2 sm:mb-3">{step.title}</h3>
           <div className="text-sm text-ink-soft leading-relaxed">{step.desc}</div>
         </article>
       ))}
@@ -144,12 +144,12 @@ type Photo = { src: string; alt: string; caption?: string };
 export function PhotoGrid({ photos }: { photos: Photo[] }) {
   const cols =
     photos.length === 1
-      ? "sm:grid-cols-1 max-w-xl"
+      ? "grid-cols-1 max-w-xl"
       : photos.length === 2
-        ? "sm:grid-cols-2"
-        : "sm:grid-cols-2 lg:grid-cols-3";
+        ? "grid-cols-2"
+        : "grid-cols-2 lg:grid-cols-3";
   return (
-    <div className={`grid grid-cols-1 ${cols} gap-4 my-8`}>
+    <div className={`grid ${cols} gap-3 sm:gap-4 my-8`}>
       {photos.map((photo) => (
         <figure
           key={photo.src}
@@ -197,7 +197,7 @@ export function WideImage({ src, alt, caption }: Photo) {
 
 export function ChipGrid({ items }: { items: string[] }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 my-8">
+    <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 my-8">
       {items.map((item) => (
         <div key={item} className="rounded-xl border border-line bg-white px-4 py-3 text-sm text-ink-soft transition-colors hover:border-accent-red hover:bg-accent-red hover:text-white">
           {item}

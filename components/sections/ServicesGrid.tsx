@@ -20,7 +20,7 @@ export function ServicesGrid() {
         </div>
 
         {/* 카드 그리드 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {SERVICES.map((service) => (
             <Link
               key={service.slug}
@@ -54,7 +54,7 @@ export function ServicesGrid() {
           ))}
 
           {/* 노력맨과 함께 카드 (마지막) */}
-          <div className="lg:col-span-1 bg-ink text-cream rounded-2xl p-8 flex flex-col justify-between min-h-[320px] relative overflow-hidden">
+          <div className="col-span-2 lg:col-span-1 bg-ink text-cream rounded-2xl p-8 flex flex-col justify-between min-h-[320px] relative overflow-hidden">
             <div className="relative z-10">
               <div className="eyebrow text-accent-red mb-4">
                 — Run with 노력맨

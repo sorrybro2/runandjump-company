@@ -71,7 +71,7 @@
 
   /* 카드 */
   .card-base {
-    @apply bg-white rounded-2xl border border-line p-6 transition-all hover:shadow-xl hover:-translate-y-1;
+    @apply bg-white rounded-2xl border border-line p-5 sm:p-6 transition-all hover:shadow-xl hover:-translate-y-1;
   }
 }
 

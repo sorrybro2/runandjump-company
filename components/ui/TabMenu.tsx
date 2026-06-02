@@ -20,7 +20,7 @@ export function TabMenu({ tabs }: TabMenuProps) {
   return (
     <>
       {/* 탭 버튼 */}
-      <div className="sticky top-[88px] z-30 border-b border-line bg-cream shadow-sm">
+      <div className="sticky top-20 z-30 border-b border-line bg-cream shadow-sm">
         <div className="container-rj">
           <div className="flex gap-1 overflow-x-auto py-3 scrollbar-hide">
             {tabs.map((tab) => (
