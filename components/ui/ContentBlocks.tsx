@@ -24,6 +24,47 @@ export function Em({ children }: { children: ReactNode }) {
   return <span className="italic text-accent-red">{children}</span>;
 }
 
+// 종목 설명 옆에 해당 분야 노력맨 캐릭터를 함께 보여주는 도입부
+export function MascotLead({
+  src,
+  alt,
+  children,
+}: {
+  src: string;
+  alt: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className="my-8 flex flex-col items-center gap-6 sm:flex-row sm:items-start">
+      <div className="relative h-44 w-36 shrink-0">
+        <Image src={src} alt={alt} fill sizes="160px" className="object-contain" />
+      </div>
+      <div className="max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft md:text-lg">
+        {children}
+      </div>
+    </div>
+  );
+}
+
+// 분야별 노력맨 캐릭터를 한 줄로 늘어놓는 라인업 (각 이미지에 종목명 라벨 포함)
+export function MascotRow({ items }: { items: Array<{ src: string; label: string }> }) {
+  return (
+    <div className="grid grid-cols-3 gap-3 my-8 sm:grid-cols-6 sm:gap-4">
+      {items.map((item) => (
+        <div key={item.label} className="relative aspect-[3/4]">
+          <Image
+            src={item.src}
+            alt={`${item.label} 노력맨 캐릭터`}
+            fill
+            sizes="(max-width: 640px) 33vw, 160px"
+            className="object-contain"
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function InfoGrid({ cards }: { cards: InfoCard[] }) {
   return (
     <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 my-8">
@@ -202,6 +243,78 @@ export function ChipGrid({ items }: { items: string[] }) {
         <div key={item} className="rounded-xl border border-line bg-white px-4 py-3 text-sm text-ink-soft transition-colors hover:border-accent-red hover:bg-accent-red hover:text-white">
           {item}
         </div>
+      ))}
+    </div>
+  );
+}
+
+// 핵심 수치를 강조하는 띠 (신뢰감 지표)
+export function StatStrip({
+  stats,
+}: {
+  stats: Array<{ num: string; label: string }>;
+}) {
+  return (
+    <div className="my-8 grid grid-cols-3 gap-3 rounded-2xl bg-ink p-6 text-center text-white sm:gap-4 sm:p-8">
+      {stats.map((stat) => (
+        <div key={stat.label}>
+          <div className="font-display text-3xl font-black italic text-accent-orange sm:text-4xl">
+            {stat.num}
+          </div>
+          <div className="mt-1 text-xs leading-snug text-white/70 sm:text-sm">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// 분야별로 분류한 공연 실적 보드 (현장명 + 신뢰 배지)
+type RecordGroup = {
+  icon: string;
+  title: string;
+  items: Array<{ name: string; tags?: string[] }>;
+};
+
+export function RecordBoard({ groups }: { groups: RecordGroup[] }) {
+  return (
+    <div className="my-8 space-y-8">
+      {groups.map((group) => (
+        <section key={group.title}>
+          <div className="mb-4 flex items-center gap-3">
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-cream text-xl">
+              {group.icon}
+            </span>
+            <h3 className="font-display text-xl font-bold sm:text-2xl">{group.title}</h3>
+            <span className="rounded-full bg-accent-blue-deep/10 px-3 py-1 text-sm font-semibold text-accent-blue-deep">
+              {group.items.length}곳
+            </span>
+          </div>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {group.items.map((item) => (
+              <div
+                key={item.name}
+                className="flex items-center justify-between gap-2 rounded-xl border border-line bg-white px-4 py-3 transition-colors hover:border-accent-red/40"
+              >
+                <span className="flex items-center gap-2 text-sm text-ink">
+                  <span className="size-1.5 shrink-0 rounded-full bg-accent-red" />
+                  {item.name}
+                </span>
+                {item.tags && item.tags.length > 0 && (
+                  <span className="flex shrink-0 flex-wrap justify-end gap-1">
+                    {item.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="whitespace-nowrap rounded-full bg-accent-red/10 px-2 py-0.5 text-[11px] font-semibold text-accent-red"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
       ))}
     </div>
   );
